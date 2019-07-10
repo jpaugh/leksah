@@ -474,7 +474,7 @@ treeViewContextMenu' view store itemsFor = reifyIDE $ \ideRef -> do
     g <- gestureMultiPressNew view
     gestureSingleSetButton g (fromIntegral BUTTON_SECONDARY)
     cid2 <- onGestureBegin g $ \s ->
-      gestureGetLastEvent g (Just s) >>= mapM_ (\event -> do
+      gestureGetLastEvent g s >>= mapM_ (\event -> do
         eventButton <- getEventButton event
         x         <- getEventButtonX eventButton
         y         <- getEventButtonY eventButton
@@ -525,7 +525,7 @@ treeViewContextMenu treeView populateMenu = do
     g <- gestureMultiPressNew treeView
     gestureSingleSetButton g (fromIntegral BUTTON_SECONDARY)
     cid2 <- onGestureBegin g $ \s ->
-      gestureGetLastEvent g (Just s) >>= mapM_ (\event -> do
+      gestureGetLastEvent g s >>= mapM_ (\event -> do
         eventButton <- getEventButton event
         x         <- getEventButtonX eventButton
         y         <- getEventButtonY eventButton
